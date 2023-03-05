@@ -1,0 +1,118 @@
+Selintro :
+---------
+
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+
+public class Selintro extends PageObjects {
+	
+	static WebDriver driver;
+	
+	public static void driver(String url) {
+		
+		try {
+			System.setProperty(PageObjects.edgeProp, PageObjects.driverPath);
+			driver = new EdgeDriver();	
+			driver.get(url);
+			System.out.println(driver.getTitle());
+			System.out.println(driver.getCurrentUrl());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		}
+	
+public static void windowMax() {
+	
+	try {
+		driver.manage().window().maximize();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+}
+
+public static void closeWin() {
+	
+	driver.quit();
+}
+
+public static void headerCheck() {
+	try {
+		WebElement home = driver.findElement(By.xpath("(//a[text()='Home'])[1]"));
+		WebElement about = driver.findElement(By.xpath("//a[text()='About']"));
+		WebElement service = driver.findElement(By.xpath("//a[text()='Service']"));
+		WebElement contact = driver.findElement(By.xpath("(//a[text()='Contact'])[1]"));
+		
+		String homeHdr = home.getText();
+		String aboutHdr = about.getText();
+		String serviceHdr = service.getText();
+		String contactHdr = contact.getText();
+		
+		if(homeHdr.equals("Home") && aboutHdr.equals("About") && serviceHdr.equals("Service") && contactHdr.equals("Contact")) {
+			System.out.println(home.getText()+"===>home Header is present as expected");
+			System.out.println(about.getText()+"===>About is present as expected");
+			System.out.println(service.getText()+"===>Service is present as expected");
+			System.out.println(contact.getText()+"===>Contact is present as expected");
+			
+		}else {
+		    System.out.println("headers mismatch");
+			
+		}
+		
+		Thread.sleep(6000);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+	
+	
+	}
+	
+
+}
+
+
+vsk .java :
+----------
+
+
+public class VSK extends Selintro {
+
+	public static void main(String[] args) {
+		
+        Selintro.driver(PageObjects.url);  
+        
+        Selintro.windowMax();
+        
+        Selintro.headerCheck();   
+        
+        Selintro.closeWin();
+		
+	}
+
+}
+
+
+
+
+Project.java:
+------------
+
+
+public class PageObjects {
+	
+	public static String edgeProp = "WebDriver.edge.driver";
+	public static String driverPath = "E:\\\\Automation\\\\Driver_Notes.exe";
+	public static String url = "https://vskdentalcare.github.io/";
+
+}
+
+
+
+
+
+
+
