@@ -3,4 +3,11 @@
   <groupId>feb27</groupId>
   <artifactId>DropDown_Project</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>ShafanAutomation</groupId>
+  		<artifactId>Selenium-java</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
