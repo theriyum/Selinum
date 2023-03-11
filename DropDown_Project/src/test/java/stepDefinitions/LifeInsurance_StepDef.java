@@ -10,11 +10,18 @@ public class LifeInsurance_StepDef extends LifeInsurance_PO {
 
 		LifeInsurance_PO.windowMax();
 
-		LifeInsurance_PO.header();
+		// LifeInsurance_PO.header();
 
-		LifeInsurance_PO.subHeader();
+		// LifeInsurance_PO.subHeader();
+
+		LifeInsurance_PO.loginDetails();
+
+		LifeInsurance_PO.dropDown();
+
+		LifeInsurance_PO.signOut();
 
 		LifeInsurance_PO.browserClose();
+
 	}
 
 }
